@@ -14,5 +14,10 @@
     <%= tag(:input, type: "text", name: "person[email]", id: "person_email", class: "form-control") %>
   </div>
 
+  <div class="form-group">
+    <label for="person_phone">Phone number</label>
+    <%= tag(:input, type: "text", name: "person[phone]", id: "person_phone", class: "form-control") %>
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
