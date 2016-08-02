@@ -1,19 +1,41 @@
 defmodule ConnectionCard.PageController do
   use ConnectionCard.Web, :controller
   import Logger
-  alias PcoApi.People.Person
+  alias PcoApi.People.{Person, Email}
 
   def index(conn, _params) do
     render conn, "index.html"
   end
 
   def signup(conn, %{"person" => person} = params) do
-    %PcoApi.Record{attributes: attrs, id: id} =
+    record =
       person
       |> Enum.into([], fn {k,v} -> {String.to_atom(k), v} end)
+      |> filter_person_params
       |> Person.new
       |> Person.create
-    conn = put_flash(conn, :info, "Created #{attrs["first_name"]} #{attrs["last_name"]} (ID #{id})")
+      |> create_contact_methods(person)
+
+    conn = put_flash(conn, :info, "Created #{record.attributes["first_name"]} #{record.attributes["last_name"]} (ID #{record.id})")
     redirect conn, to: "/"
+  end
+
+  defp create_contact_methods(person, params) do
+    person
+    |> create_email(params)
+
+    person
+  end
+
+  defp create_email(person, params) do
+    email = Email.new(location: "home", address: params["email"])
+    person
+    |> Email.create(email)
+  end
+
+  def filter_person_params(person) do
+    whitelist = ~w(first_name last_name)a
+    person
+    |> Enum.filter(fn {k,v} -> k in whitelist end)
   end
 end
