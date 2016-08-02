@@ -40,3 +40,6 @@ config :connection_card, ConnectionCard.Repo,
   database: "connection_card_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :pco_api, :api_key, System.get_env("PCO_API_KEY")
+config :pco_api, :api_secret, System.get_env("PCO_API_SECRET")
