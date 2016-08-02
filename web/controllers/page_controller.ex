@@ -1,7 +1,7 @@
 defmodule ConnectionCard.PageController do
   use ConnectionCard.Web, :controller
   import Logger
-  alias PcoApi.People.{Person, Email, PhoneNumber}
+  alias PcoApi.People.{Person, Email, PhoneNumber, Address}
 
   def index(conn, _params) do
     render conn, "index.html"
@@ -23,6 +23,7 @@ defmodule ConnectionCard.PageController do
   defp create_contact_methods(person, params) do
     create_email(person, params)
     create_phone(person, params)
+    create_address(person, params)
 
     person
   end
@@ -37,6 +38,12 @@ defmodule ConnectionCard.PageController do
     phone = PhoneNumber.new(location: "home", number: params["phone"])
     person
     |> PhoneNumber.create(phone)
+  end
+
+  defp create_address(person, params) do
+    address = Address.new(location: "home", street: params["street"], city: params["city"], state: params["state"], zip: params["zip"])
+    person
+    |> Address.create(address)
   end
 
   def filter_person_params(person) do

@@ -19,5 +19,25 @@
     <%= tag(:input, type: "text", name: "person[phone]", id: "person_phone", class: "form-control") %>
   </div>
 
+  <div class="form-group">
+    <label for="person_street">Street address</label>
+    <%= tag(:input, type: "text", name: "person[street]", id: "person_street", class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <label for="person_city">City</label>
+    <%= tag(:input, type: "text", name: "person[city]", id: "person_city", class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <label for="person_state">State</label>
+    <%= tag(:input, type: "text", name: "person[state]", id: "person_state", class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <label for="person_zip">Zip Code</label>
+    <%= tag(:input, type: "text", name: "person[zip]", id: "person_zip", class: "form-control") %>
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
