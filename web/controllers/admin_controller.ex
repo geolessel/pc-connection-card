@@ -3,6 +3,7 @@ defmodule ConnectionCard.AdminController do
   import Logger
 
   def index(conn, _params) do
-    render conn, "index.html"
+    settings = ConnectionCard.Repo.all ConnectionCard.Setting
+    render conn, "index.html", settings: settings
   end
 end

@@ -8,6 +8,5 @@ defmodule ConnectionCard.Repo.Migrations.CreateSetting do
 
       timestamps
     end
-
   end
 end

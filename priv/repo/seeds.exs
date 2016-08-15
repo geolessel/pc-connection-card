@@ -9,3 +9,10 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias ConnectionCard.Repo
+
+%ConnectionCard.Setting{
+  name: "church_name",
+  value: "Your church name"}
+|> Repo.insert!
