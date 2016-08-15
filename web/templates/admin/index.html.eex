@@ -1,6 +1,10 @@
 <h1>Admin</h1>
 
-<div class="form-group">
-  <%= label(:setting, :church_name, "Church Name") %>
-  <%= text_input(:setting, :church_name, class: "form-control", value: setting_value(@settings, "church_name")) %>
-</div>
+<div id="name"></div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    const Setting = React.createElement(Components.ChurchNameSetting, { name: "<%= setting_value(@settings, "church_name") %>"})
+    ReactDOM.render(Setting, document.getElementById("name"))
+  }
+</script>

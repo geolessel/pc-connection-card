@@ -24,11 +24,12 @@ defmodule ConnectionCard.Router do
     pipe_through :browser
 
     get "/", AdminController, :index
-    resources "/settings", SettingController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ConnectionCard do
-  #   pipe_through :api
-  # end
+  scope "/api", ConnectionCard do
+    pipe_through :api
+
+    resources "/settings", SettingController, except: [:new, :edit]
+  end
 end
