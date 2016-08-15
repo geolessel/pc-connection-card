@@ -20,6 +20,12 @@ defmodule ConnectionCard.Router do
     post "/signup", PageController, :signup
   end
 
+  scope "/admin", ConnectionCard do
+    pipe_through :browser
+
+    get "/", AdminController, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", ConnectionCard do
   #   pipe_through :api
