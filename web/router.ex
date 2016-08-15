@@ -24,6 +24,7 @@ defmodule ConnectionCard.Router do
     pipe_through :browser
 
     get "/", AdminController, :index
+    resources "/settings", SettingController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.
