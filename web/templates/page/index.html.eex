@@ -39,5 +39,15 @@
     <%= tag(:input, type: "text", name: "person[zip]", id: "person_zip", class: "form-control") %>
   </div>
 
+  <fieldset>
+    <h2>Which ministries would you like more information about?</h2>
+    <%= for option <- @options do %>
+      <div class="form-group">
+        <%= checkbox :interests, option.workflow_id %>
+        <%= label :interests, option.workflow_id, option.name %>
+      </div>
+    <% end %>
+  </fieldset>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
