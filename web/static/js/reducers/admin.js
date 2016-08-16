@@ -18,7 +18,8 @@ function options(state = [], action) {
     // TODO: actually get a new structure from the api instead of creating one here
     return [...state, {name: "", workflow_id: "", id: ""}]
   case "CREATE_OPTION":
-    return [...state, action.option]
+    newState = state.filter(s => s.id !== "")
+    return [...newState, action.option]
   case "REMOVE_OPTION":
     newState = state.filter(s => s.id !== action.option.id)
     return newState
