@@ -8,7 +8,7 @@ export function updateName(name) {
     url: "/api/settings/church_name",
     data: { setting: { value: name } },
     success: response => {
-      store.dispatch({ type: "UPDATE_NAME", response.data.name })
+      store.dispatch({ type: "UPDATE_NAME", name: response.data.name })
     },
     error: response => {
       console.error(response)

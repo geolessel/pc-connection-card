@@ -21,13 +21,13 @@ defmodule ConnectionCard.OptionController do
     end
   end
 
-  # def delete(conn, %{"id" => id}) do
-  #   option = Repo.get!(Option, id)
+  def delete(conn, %{"id" => id}) do
+    option = Repo.get!(Option, id)
 
-  #   # Here we use delete! (with a bang) because we expect
-  #   # it to always work (and if it does not, it will raise).
-  #   Repo.delete!(option)
+    # Here we use delete! (with a bang) because we expect
+    # it to always work (and if it does not, it will raise).
+    Repo.delete!(option)
 
-  #   send_resp(conn, :no_content, "")
-  # end
+    send_resp(conn, :no_content, "")
+  end
 end

@@ -8,7 +8,6 @@ defmodule ConnectionCard.SettingController do
   def update(conn, %{"id" => setting_name, "setting" => setting_params}) do
     setting = Repo.get_by(Setting, name: setting_name)
     changeset = Setting.changeset(setting, setting_params)
-    IO.inspect changeset
 
     case Repo.update(changeset) do
       {:ok, setting} ->

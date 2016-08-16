@@ -1,5 +1,5 @@
 import React from "react"
-import { removeOption, createOption } from "web/static/js/actions/options"
+import { removeOption, createOption, deleteOption } from "web/static/js/actions/options"
 
 const Option = React.createClass({
   getInitialState() {
@@ -13,7 +13,7 @@ const Option = React.createClass({
   
   render() {
     const { props } = this
-    if (props.id) { return <ExistingOption {...props}/> }
+    if (props.id) { return <ExistingOption {...props} onClick={this.handleDelete.bind(null, props.id)} /> }
     else {
       const options = props.workflows.map(w => <option key={w.id} value={w.id}>{w.name}</option>)
       return (
@@ -50,6 +50,10 @@ const Option = React.createClass({
 
   handleSave() {
     this.props.id ? updateOption(this.state) : createOption(this.state)
+  },
+
+  handleDelete(id) {
+    deleteOption(id)
   }
 })
 
@@ -60,13 +64,9 @@ const ExistingOption = props => {
       <strong>Name</strong>: {props.name}
       {' '}<i className="fa fa-arrow-circle-o-right"></i>{' '}
       <strong>Workflow</strong>: {name}
+      {' '}<i className="fa fa-minus-circle" onClick={props.onClick}></i>
     </div>
   )
 }
-
-const NewOption = props => {
-  console.log(props)
-}
- 
 
 module.exports = Option

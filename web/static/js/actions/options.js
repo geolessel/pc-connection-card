@@ -14,6 +14,19 @@ export function removeOption(option) {
   store.dispatch({ type: "REMOVE_OPTION", option })
 }
 
+export function deleteOption(id) {
+  $.ajax({
+    method: "DELETE",
+    url: `/api/options/${id}`,
+    success: response => {
+      store.dispatch({ type: "DELETE_OPTION", id })
+    },
+    error: response => {
+      console.error(response)
+    }
+  })
+}
+
 export function createOption(option) {
   $.ajax({
     method: "POST",

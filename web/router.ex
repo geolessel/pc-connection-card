@@ -31,6 +31,6 @@ defmodule ConnectionCard.Router do
     pipe_through :api
 
     resources "/settings", SettingController, only: [:update]
-    resources "/options", OptionController, only: [:create]
+    resources "/options", OptionController, only: [:create, :delete]
   end
 end
