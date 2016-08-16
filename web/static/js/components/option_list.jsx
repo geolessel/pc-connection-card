@@ -14,8 +14,11 @@ const OptionList = React.createClass({
   },
 
   componentWillMount() {
-    load(this.props.options)
     store.subscribe(() => this.handleNewState())
+  },
+
+  componentDidMount() {
+    load(this.props.options)
   },
 
   render() {

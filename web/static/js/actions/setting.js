@@ -2,6 +2,10 @@
 import { store } from "../stores/store"
 import $ from "jquery"
 
+export function load(name) {
+  store.dispatch({ type: "LOAD_NAME", name })
+}
+
 export function updateName(name) {
   $.ajax({
     method: "PUT",

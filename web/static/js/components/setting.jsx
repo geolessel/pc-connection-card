@@ -1,5 +1,5 @@
 import React from "react"
-import { updateName } from "../actions/setting"
+import { updateName, load } from "../actions/setting"
 import { store } from "../stores/store"
 const { string } = React.PropTypes
 
@@ -13,7 +13,7 @@ const ChurchNameSetting = React.createClass({
   },
 
   componentWillMount() {
-    updateName(this.props.name)
+    load(this.props.name)
     store.subscribe(() => this.handleNewState())
   },
   
