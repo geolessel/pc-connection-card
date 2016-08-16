@@ -7,11 +7,11 @@ export function updateName(name) {
     method: "PUT",
     url: "/api/settings/church_name",
     data: { setting: { value: name } },
-    success: (data) => {
-      store.dispatch({ type: "UPDATE_NAME", name })
+    success: response => {
+      store.dispatch({ type: "UPDATE_NAME", response.data.name })
     },
-    error: (data) => {
-      console.error(data)
+    error: response => {
+      console.error(response)
     }
   })
 }

@@ -13,6 +13,7 @@ const ChurchNameSetting = React.createClass({
   },
 
   componentWillMount() {
+    updateName(this.props.name)
     store.subscribe(() => this.handleNewState())
   },
   

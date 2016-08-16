@@ -6,4 +6,10 @@ defmodule ConnectionCard.AdminView do
     |> Enum.find(&(&1.name == name))
     |> Map.get(:value)
   end
+
+  def workflow_json(workflows) do
+    workflows
+    |> Enum.into([], &(%{name: &1.attributes["name"], id: &1.id}))
+    |> Poison.encode!
+  end
 end

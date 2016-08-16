@@ -30,6 +30,7 @@ defmodule ConnectionCard.Router do
   scope "/api", ConnectionCard do
     pipe_through :api
 
-    resources "/settings", SettingController, except: [:new, :edit]
+    resources "/settings", SettingController, only: [:update]
+    resources "/options", OptionController, only: [:create]
   end
 end

@@ -22,9 +22,11 @@ import ReactDOM from "react-dom"
 
 // import socket from "./socket"
 import ChurchNameSetting from "./components/setting"
+import OptionList from "./components/option_list"
 
 window.React = React
 window.ReactDOM = ReactDOM
 window.Components = {
-  ChurchNameSetting
+  ChurchNameSetting,
+  OptionList
 }
