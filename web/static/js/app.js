@@ -12,6 +12,8 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import React from "react"
+import ReactDOM from "react-dom"
 
 // Import local files
 //
@@ -19,3 +21,12 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import ChurchNameSetting from "./components/setting"
+import OptionList from "./components/option_list"
+
+window.React = React
+window.ReactDOM = ReactDOM
+window.Components = {
+  ChurchNameSetting,
+  OptionList
+}

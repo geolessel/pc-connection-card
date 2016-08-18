@@ -1,0 +1,17 @@
+<h1>Admin</h1>
+
+<div id="name"></div>
+
+<h2>Interest options</h2>
+
+<div id="interest-options"></div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    const Setting = React.createElement(Components.ChurchNameSetting, { name: "<%= setting_value(@settings, "church_name") %>"})
+    ReactDOM.render(Setting, document.getElementById("name"))
+
+    const OptionList = React.createElement(Components.OptionList, { workflows: <%= raw workflow_json(@workflows) %>, options: <%= raw Poison.encode! @options %> })
+    ReactDOM.render(OptionList, document.getElementById("interest-options"))
+  }
+</script>
