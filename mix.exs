@@ -37,7 +37,7 @@ defmodule ConnectionCard.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:credo, "~> 0.4", only: [:dev, :test]},
+     {:credo, "~> 0.4.8", only: [:dev, :test]},
      {:pco_api, github: "geolessel/pco-api-elixir"}]
   end
 
