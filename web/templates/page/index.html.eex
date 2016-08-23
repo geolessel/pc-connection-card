@@ -1,53 +1,68 @@
 <%= form_tag("/signup") do %>
-  <div class="form-group">
-    <label for="person_first_name">First name</label>
-    <%= tag(:input, type: "text", name: "person[first_name]", id: "person_first_name", class: "form-control") %>
-  </div>
+  <div class="card">
 
-  <div class="form-group">
-    <label for="person_last_name">Last name</label>
-    <%= tag(:input, type: "text", name: "person[last_name]", id: "person_last_name", class: "form-control") %>
-  </div>
+    <h2>Contact Information</h2>
 
-  <div class="form-group">
-    <label for="person_email">Email address</label>
-    <%= tag(:input, type: "text", name: "person[email]", id: "person_email", class: "form-control") %>
-  </div>
-
-  <div class="form-group">
-    <label for="person_phone">Phone number</label>
-    <%= tag(:input, type: "text", name: "person[phone]", id: "person_phone", class: "form-control") %>
-  </div>
-
-  <div class="form-group">
-    <label for="person_street">Street address</label>
-    <%= tag(:input, type: "text", name: "person[street]", id: "person_street", class: "form-control") %>
-  </div>
-
-  <div class="form-group">
-    <label for="person_city">City</label>
-    <%= tag(:input, type: "text", name: "person[city]", id: "person_city", class: "form-control") %>
-  </div>
-
-  <div class="form-group">
-    <label for="person_state">State</label>
-    <%= tag(:input, type: "text", name: "person[state]", id: "person_state", class: "form-control") %>
-  </div>
-
-  <div class="form-group">
-    <label for="person_zip">Zip Code</label>
-    <%= tag(:input, type: "text", name: "person[zip]", id: "person_zip", class: "form-control") %>
-  </div>
-
-  <fieldset>
-    <h2>Which ministries would you like more information about?</h2>
-    <%= for option <- @options do %>
-      <div class="form-group">
-        <%= checkbox :interests, option.workflow_id %>
-        <%= label :interests, option.workflow_id, option.name %>
+    <div class="flex-stack mb-4r">
+      <div>
+        <label for="person_first_name" class="label">First name</label>
+        <%= tag(:input, type: "text", name: "person[first_name]", id: "person_first_name", placeholder: "John", class: "input") %>
       </div>
-    <% end %>
-  </fieldset>
+      <div>
+        <label for="person_last_name" class="label">Last name</label>
+        <%= tag(:input, type: "text", name: "person[last_name]", id: "person_last_name", placeholder: "Locke", class: "input") %>
+      </div>
+    </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="flex-stack mb-4r">
+      <div>
+        <label for="person_email" class="label">Email address</label>
+        <%= tag(:input, type: "text", name: "person[email]", id: "person_email", placeholder: "locked@thehatch.com", class: "input") %>
+      </div>
+      <div>
+        <label for="person_phone" class="label">Phone number</label>
+        <%= tag(:input, type: "text", name: "person[phone]", id: "person_phone", placeholder: "481-516-2342", class: "input") %>
+      </div>
+    </div>
+
+
+    <div class="mb-4r">
+      <label for="person_street" class="label">Street address</label>
+      <%= tag(:input, type: "text", name: "person[street]", id: "person_street", placeholder: "123 Street", class: "input") %>
+    </div>
+
+    <div class="flex-stack mb-4r">
+      <div class="fb-0">
+        <label for="person_city" class="label">City</label>
+        <%= tag(:input, type: "text", name: "person[city]", id: "person_city", placeholder: "Los Angeles", class: "input") %>
+      </div>
+      <div class="flex-stack fb-0">
+        <div>
+          <label for="person_state" class="label">State</label>
+          <%= tag(:input, type: "text", name: "person[state]", id: "person_state", placeholder: "CA", class: "input") %>
+        </div>
+        <div>
+          <label for="person_zip" class="label">Zip Code</label>
+          <%= tag(:input, type: "text", name: "person[zip]", id: "person_zip", placeholder: "90045", class: "input") %>
+        </div>
+      </div>
+    </div>
+
+    <h2>Which ministries would you like more information about?</h2>
+
+    <fieldset>
+      <div class="d-f fw-w fd-r" style="margin 0 -1rem -1rem">
+        <%= for option <- @options do %>
+          <div class="option">
+            <%= checkbox :interests, option.workflow_id %>
+            <%= label :interests, option.workflow_id, option.name %>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn btn--primary btn--right">Submit</button>
+
+  </div>
+
 <% end %>
