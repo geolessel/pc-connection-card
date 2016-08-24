@@ -1,10 +1,14 @@
-<h1>Admin</h1>
+<header class="header">
+  <h1>Admin</h1>
+</header>
 
-<div id="name"></div>
+<div class="card">
+  <div id="name"></div>
 
-<h2>Interest options</h2>
+  <h2>Interest options</h2>
 
-<div id="interest-options"></div>
+  <div id="interest-options" class="options-list options-list--workflows fw-w"></div>
+</div>
 
 <script type="text/javascript">
   window.onload = function() {

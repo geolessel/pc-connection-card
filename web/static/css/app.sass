@@ -12,6 +12,11 @@
   &:after
     clear: both
 
+=truncate
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
 @mixin equal-flex-card($min-width: 200px, $gutter: 10px, $max-cols: 5, $other-screen-width: 0)
   flex: 1 0 $min-width
   margin: 0 $gutter/2 $gutter
@@ -37,6 +42,9 @@ body
 
 header
   margin: 0 0 3rem
+
+p
+  margin: 0 0 1rem
 
 .card
   +clearfix
@@ -103,21 +111,52 @@ form
   input[type=checkbox]
     vertical-align: text-bottom
 
-  fieldset
-    background: #f8f8f8
-    border: none
-    padding: 2rem 1rem 0
+.options-list
+  background: #f8f8f8
+  border: none
+  padding: 2rem 2rem 0
+
+  .option
+    margin: 0 1rem 2rem
+    width: calc(33.3333% - 20px)
+
+  &.options-list--workflows
 
     .option
-      +equal-flex-card(100px, 20px, 4)
-      margin: 0 1rem 2rem
+      border: 1px solid #ddd
+      height: 50px
+      margin-bottom: 2rem
+      padding: 1rem
+      position: relative
+      width: calc(33.3333% - 42px)
+
+    .option.btn
+      height: 72px
+      width: calc(33.3333% - 20px)
 
   input::-webkit-input-placeholder
     color: rgba(0, 0, 0, 0.15)
 
+.delete-icon
+  background: #f8f8f8
+  width: 20px
+  height: 20px
+  text-align: center
+  border-radius: 50%
+  position: absolute
+  right: -10px
+  top: -10px
+  cursor: pointer
 
+  .fa
+    &:before
+      +font-size(18)
+      color: red
 
 // INTERFACES THINGS
+
+.truncate
+  +truncate()
 
 .flex-stack
   display: flex

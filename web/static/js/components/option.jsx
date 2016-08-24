@@ -10,7 +10,7 @@ const Option = React.createClass({
       workflow_id: this.props.workflow_id || this.props.workflows[0].id
     }
   },
-  
+
   render() {
     const { props } = this
     if (props.id) { return <ExistingOption {...props} onClick={this.handleDelete.bind(null, props.id)} /> }
@@ -60,11 +60,19 @@ const Option = React.createClass({
 const ExistingOption = props => {
   name = props.workflows.find(w => w.id == props.workflow_id).name
   return (
-    <div style={{fontSize: "1.5em"}}>
-      <strong>Name</strong>: {props.name}
-      {' '}<i className="fa fa-arrow-circle-o-right"></i>{' '}
-      <strong>Workflow</strong>: {name}
-      {' '}<i className="fa fa-minus-circle" onClick={props.onClick}></i>
+    <div className="option">
+      <div className="delete-icon" onClick={props.onClick}>
+        <div className="fa fa-minus-circle"></div>
+      </div>
+      <p>{props.name}</p>
+      <p className="mb-0 fs-12p">
+        <strong>Workflow</strong>:
+        {' '}
+        <select>
+          <option value="One Workflow">One Workflow</option>
+          <option value="Two Workflow">Two Workflow</option>
+        </select>
+      </p>
     </div>
   )
 }
