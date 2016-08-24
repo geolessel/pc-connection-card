@@ -1,13 +1,16 @@
 <header class="header">
+  <p style="float: right; margin-top: 1rem">
+    <%= link("Back to Form", to: "/", style: "color: black") %>
+  </p>
   <h1>Admin</h1>
 </header>
 
 <div class="card">
   <div id="name"></div>
 
-  <h2>Interest options</h2>
+  <h2>Interest options:</h2>
 
-  <div id="interest-options" class="options-list options-list--workflows fw-w"></div>
+  <div id="interest-options" class="fw-w"></div>
 </div>
 
 <script type="text/javascript">

@@ -35,7 +35,9 @@ html
   font-size: 62.5%
 
 body
-  background: #0d7ebf
+  background: url("/images/bg_pattern.svg") no-repeat center center fixed
+  background-size: cover
+  height: 100%
   margin: 0
   font-family: lato, sans-serif
   +font-size(16)
@@ -48,9 +50,9 @@ p
 
 .card
   +clearfix
-  background: white
+  background: #f8f8f8
   border-radius: 3px
-  margin: 0 0 2rem
+  margin: 0 1rem 2rem
   padding: 3rem
 
 .btn
@@ -59,6 +61,7 @@ p
   border-radius: 3px
   +font-size(16)
   padding: 0.9rem 1.8rem
+  cursor: pointer
 
   &.btn--primary
     background: #449d44
@@ -81,6 +84,7 @@ p
 h1
   +font-size(28)
   color: #fff
+  margin: 2rem 1rem 0
 
 h2
   +font-size(18)
@@ -101,6 +105,7 @@ form
 
   .input
     +font-size(18)
+    background: #f8f8f8
     border: none
     border-bottom: 1px solid rgba(0, 0, 0, 0.1)
     box-sizing: border-box
@@ -112,46 +117,33 @@ form
     vertical-align: text-bottom
 
 .options-list
-  background: #f8f8f8
+  background: white
   border: none
-  padding: 2rem 2rem 0
+  padding: 2rem 1rem 0
 
   .option
     margin: 0 1rem 2rem
     width: calc(33.3333% - 20px)
 
-  &.options-list--workflows
-
-    .option
-      border: 1px solid #ddd
-      height: 50px
-      margin-bottom: 2rem
-      padding: 1rem
-      position: relative
-      width: calc(33.3333% - 42px)
-
-    .option.btn
-      height: 72px
-      width: calc(33.3333% - 20px)
-
   input::-webkit-input-placeholder
     color: rgba(0, 0, 0, 0.15)
 
+.pane
+  +font-size(14)
+  background: #fff
+  border: 1px solid #eee
+  border-radius: 2px
+  padding: 1rem
+  margin: 0 0 1.5rem
+
 .delete-icon
-  background: #f8f8f8
-  width: 20px
-  height: 20px
-  text-align: center
-  border-radius: 50%
-  position: absolute
-  right: -10px
-  top: -10px
+  flex: 0 !important
   cursor: pointer
 
   .fa
     &:before
-      +font-size(18)
-      color: red
+      +font-size(16)
+      color: #d00
 
 // INTERFACES THINGS
 

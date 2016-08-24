@@ -25,10 +25,8 @@ const OptionList = React.createClass({
     const options = this.state.options.map((o, i) => <Option key={o.id} workflows={this.props.workflows} {...o} />)
     return (
       <div>
-        <div className="d-f fw-w fd-r" style={{margin: "0 -1rem -1rem"}}>
-          {options}
-          <button className="option option--button btn btn--primary" onClick={this.handleAddClick}>Add another option</button>
-        </div>
+        {options}
+        <button className="btn btn--primary" onClick={this.handleAddClick}>Add another option</button>
       </div>
     )
   },
