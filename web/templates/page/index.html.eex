@@ -1,3 +1,13 @@
+<header class="header">
+  <p style="float: right; margin: 1rem 1rem 0">
+    <%= link("Admin", to: "/admin", style: "color: black") %>
+  </p>
+  <h1>Connection Kiosk</h1>
+  <p class="text-box" style="display: none">
+    Church descriptive text we should let them set on the admin page. Flank ribeye salami ball tip meatloaf, ham hock chicken ham bresaola turkey prosciutto shoulder. Porchetta andouille pork belly, meatloaf t-bone turducken pork loin drumstick. Salami turkey short loin alcatra pork chop kielbasa andouille chicken beef tail.
+  </p>
+</header>
+
 <%= form_tag("/signup") do %>
   <div class="card">
 
@@ -50,7 +60,7 @@
 
     <h2>Which ministries would you like more information about?</h2>
 
-    <fieldset>
+    <fieldset class="options-list">
       <div class="d-f fw-w fd-r" style="margin 0 -1rem -1rem">
         <%= for option <- @options do %>
           <div class="option">

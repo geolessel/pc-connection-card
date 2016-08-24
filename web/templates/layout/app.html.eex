@@ -13,16 +13,6 @@
 
   <body>
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-          </ul>
-        </nav>
-        <h1>Connection Kiosk</h1>
-        <p class="text-box">
-          Church descriptive text we should let them set on the admin page. Flank ribeye salami ball tip meatloaf, ham hock chicken ham bresaola turkey prosciutto shoulder. Porchetta andouille pork belly, meatloaf t-bone turducken pork loin drumstick. Salami turkey short loin alcatra pork chop kielbasa andouille chicken beef tail.
-        </p>
-      </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

@@ -8,7 +8,7 @@ const OptionList = React.createClass({
   propTypes: {
     workflows: array.isRequired
   },
-  
+
   getInitialState() {
     return {options: []}
   },
@@ -26,7 +26,7 @@ const OptionList = React.createClass({
     return (
       <div>
         {options}
-        <button className="btn btn-primary" onClick={this.handleAddClick}>Add another option</button>
+        <button className="btn btn--primary" onClick={this.handleAddClick}>Add another option</button>
       </div>
     )
   },
