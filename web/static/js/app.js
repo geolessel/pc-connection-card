@@ -22,11 +22,13 @@ import ReactDOM from "react-dom"
 
 // import socket from "./socket"
 import ChurchNameSetting from "./components/setting"
+import DefaultWorkflow from "./components/default_workflow"
 import OptionList from "./components/option_list"
 
 window.React = React
 window.ReactDOM = ReactDOM
 window.Components = {
   ChurchNameSetting,
+  DefaultWorkflow,
   OptionList
 }
