@@ -14,8 +14,8 @@
   <body>
     <div class="wrapper">
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div class="box box--text box--info mt-2r" role="alert"><%= get_flash(@conn, :info) %></div>
+      <div class="box box--text box--danger mt-2r" role="alert"><%= get_flash(@conn, :error) %></div>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
