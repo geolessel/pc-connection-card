@@ -21,14 +21,12 @@ import ReactDOM from "react-dom"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
-import ChurchNameSetting from "./components/setting"
 import DefaultWorkflow from "./components/default_workflow"
 import OptionList from "./components/option_list"
 
 window.React = React
 window.ReactDOM = ReactDOM
 window.Components = {
-  ChurchNameSetting,
   DefaultWorkflow,
   OptionList
 }
