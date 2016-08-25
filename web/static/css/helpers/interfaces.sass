@@ -1,0 +1,32 @@
+@import "mixins"
+
+.truncate
+  +truncate()
+
+.flex-stack
+  display: flex
+
+.flex-stack > *
+  flex-grow: 1
+  flex-shrink: 1
+  flex-basis: auto
+
+@media all and (max-width: 767px)
+  .flex-stack
+    flex-direction: column
+  .flex-stack > * + *
+    margin-top: 1rem
+  .flex-stack > *:first-child
+    margin-top: 0
+  .flex-stack > *:last-child
+    margin-bottom: 0
+
+@media (min-width: 768px)
+  .flex-stack
+    flex-direction: row
+  .flex-stack > * + *
+    margin-left: 2rem
+  .flex-stack > *:first-child
+    margin-left: 0
+  .flex-stack > *:last-child
+    margin-right: 0
