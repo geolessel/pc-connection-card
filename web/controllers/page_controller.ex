@@ -1,7 +1,7 @@
 defmodule ConnectionCard.PageController do
   use ConnectionCard.Web, :controller
 
-  alias ConnectionCard.{Repo, Option}
+  alias ConnectionCard.{Repo, Option, Setting}
   alias PcoApi.People.{Person, Email, PhoneNumber, Address}
   alias PcoApi.People.Workflow.Card
 
@@ -18,6 +18,7 @@ defmodule ConnectionCard.PageController do
       |> Person.new()
       |> Person.create()
       |> create_contact_methods(person_params)
+      |> add_to_default_workflow()
       |> add_to_workflows(interests)
 
     put_flash(
@@ -60,6 +61,14 @@ defmodule ConnectionCard.PageController do
   defp required_address_params_present?(params) do
     ["street", "city", "state", "zip"]
     |> Enum.all?(&(String.length(params[&1]) > 0))
+  end
+
+  defp add_to_default_workflow(person) do
+    card = Card.new(person_id: person.id)
+    id = Repo.one from s in Setting, where: s.name == "default_workflow_id", select: s.value
+    # TODO: change either this or the API wrapper. This requires inside knowledge of pco_api to make this work.
+    Card.create(%PcoApi.Record{type: "Workflow", id: id}, card)
+    person
   end
 
   defp add_to_workflows(person, interests) do
