@@ -1,15 +1,15 @@
 <header class="header">
-  <p style="float: right; margin: 1rem 1rem 0">
+  <p style="float: right; margin: 1rem 0 0">
     <%= link("Admin", to: "/admin", style: "color: black") %>
   </p>
   <h1>Connection Kiosk</h1>
-  <p class="text-box" style="display: none">
+  <p class="box box--text">
     Church descriptive text we should let them set on the admin page. Flank ribeye salami ball tip meatloaf, ham hock chicken ham bresaola turkey prosciutto shoulder. Porchetta andouille pork belly, meatloaf t-bone turducken pork loin drumstick. Salami turkey short loin alcatra pork chop kielbasa andouille chicken beef tail.
   </p>
 </header>
 
 <%= form_tag("/signup") do %>
-  <div class="card">
+  <div class="box">
 
     <h2>Contact Information</h2>
 

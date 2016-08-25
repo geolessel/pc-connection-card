@@ -1,35 +1,8 @@
-=font-size($font-size: 16)
-  font-size: #{$font-size}px
-  font-size: #{$font-size / 10}rem
-
-=clearfix
-  position: relative
-  *zoom: 1
-  &:before,
-  &:after
-    display: table
-    content: ""
-  &:after
-    clear: both
-
-=truncate
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
-
-@mixin equal-flex-card($min-width: 200px, $gutter: 10px, $max-cols: 5, $other-screen-width: 0)
-  flex: 1 0 $min-width
-  margin: 0 $gutter/2 $gutter
-
-  @for $i from 2 through $max-cols
-    $screen-width: ($min-width*$i)+($gutter*$i)+($other-screen-width)
-    $column-width: (100%/$i)
-    @media (min-width: $screen-width)
-      max-width: calc(#{$column-width} - #{$gutter})
-
-  $column-width: (100%/$max-cols)
-  @media (min-width: $min-width*$max-cols)
-    min-width: calc(#{$column-width} - #{$gutter})
+@import "helpers/interfaces"
+@import "helpers/mixins"
+@import "views/index"
+@import "views/admin"
+@import "modules/buttons"
 
 html
   font-size: 62.5%
@@ -48,73 +21,27 @@ header
 p
   margin: 0 0 1rem
 
-.card
-  +clearfix
-  background: #f8f8f8
-  border-radius: 3px
-  margin: 0 1rem 2rem
-  padding: 3rem
-
-.btn
-  background: white
-  border: none
-  border-radius: 3px
-  +font-size(16)
-  padding: 0.9rem 1.8rem
-  cursor: pointer
-
-  &.btn--primary
-    background: #449d44
-    color: white
-
-  &.btn--right
-    float: right
-
-.container
+.wrapper
   margin: 0 auto
   max-width: 800px
+  padding: 0 1rem
 
-.text-box
-  +font-size(14)
-  background: #fff
+.box
+  +clearfix()
+  background: #f8f8f8
   border-radius: 3px
-  line-height: 1.5
-  padding: 20px
+  margin: 0 0 2rem
+  box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.3)
+  padding: 3rem
 
 h1
   +font-size(28)
   color: #fff
-  margin: 2rem 1rem 0
+  margin: 2rem 0
 
 h2
   +font-size(18)
   margin: 0 0 3rem
-
-form
-
-  .label, .input
-    display: block
-    width: 100%
-    // width: 99.8%
-
-  .label
-    +font-size(12)
-    letter-spacing: 1px
-    margin: 0 0 5px
-    text-transform: uppercase
-
-  .input
-    +font-size(18)
-    background: #f8f8f8
-    border: none
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
-    box-sizing: border-box
-    font-family: lato, sans-serif
-    outline: none
-    padding: 10px 0
-
-  input[type=checkbox]
-    vertical-align: text-bottom
 
 .options-list
   background: white
@@ -136,54 +63,4 @@ form
   padding: 1rem
   margin: 0 0 1.5rem
 
-.delete-icon
-  flex: 0 !important
-  cursor: pointer
-
-  .fa
-    &:before
-      +font-size(16)
-      color: #d00
-
-// INTERFACES THINGS
-
-.truncate
-  +truncate()
-
-.flex-stack
-  display: flex
-
-.flex-stack > *
-  flex-grow: 1
-  flex-shrink: 1
-  flex-basis: auto
-
-@media all and (max-width: 767px)
-  .flex-stack
-    flex-direction: column
-  .flex-stack > * + *
-    margin-top: 1rem
-  .flex-stack > *:first-child
-    margin-top: 0
-  .flex-stack > *:last-child
-    margin-bottom: 0
-
-@media (min-width: 768px)
-  .flex-stack
-    flex-direction: row
-  .flex-stack > * + *
-    margin-left: 2rem
-  .flex-stack > *:first-child
-    margin-left: 0
-  .flex-stack > *:last-child
-    margin-right: 0
-
-
-
-// MINIONS
-
-.fb-0
-  flex-basis: 0
-
-.mb-4r
-  margin-bottom: 4rem
+@import "helpers/minions"

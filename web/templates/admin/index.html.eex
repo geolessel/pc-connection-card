@@ -5,7 +5,7 @@
   <h1>Admin</h1>
 </header>
 
-<div class="card">
+<div class="box">
   <div id="name"></div>
 
   <h2>Add all connection cards to this workflow:</h2>

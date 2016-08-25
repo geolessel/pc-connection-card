@@ -1,0 +1,32 @@
+@import "../helpers/interfaces"
+@import "../helpers/mixins"
+
+.box
+  &.box--text
+    +font-size(14)
+    line-height: 1.5
+
+form
+
+  .label, .input
+    display: block
+    width: 100%
+
+  .label
+    +font-size(12)
+    letter-spacing: 1px
+    margin: 0 0 5px
+    text-transform: uppercase
+
+  .input
+    +font-size(18)
+    background: #f8f8f8
+    border: none
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    box-sizing: border-box
+    font-family: lato, sans-serif
+    outline: none
+    padding: 10px 0
+
+  input[type=checkbox]
+    vertical-align: text-bottom
