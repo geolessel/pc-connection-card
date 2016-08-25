@@ -2,10 +2,6 @@ import { combineReducers } from "redux"
 
 function settings(state = {name: ""}, action) {
   switch(action.type) {
-  case "LOAD_NAME":
-    return { name: action.name }
-  case "UPDATE_NAME":
-    return { name: action.name }
   default:
     return state
   }
