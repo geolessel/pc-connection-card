@@ -3,12 +3,10 @@ defmodule ConnectionCard.PageController do
 
   alias ConnectionCard.{Repo, Option}
   alias PcoApi.People.{Person, Email, PhoneNumber, Address}
-  alias PcoApi.People.Workflow
   alias PcoApi.People.Workflow.Card
 
   def index(conn, _params) do
     options = Repo.all from o in Option, select: %{name: o.name, workflow_id: o.workflow_id}
-    IO.inspect options
     render conn, "index.html", options: options
   end
 
@@ -25,8 +23,8 @@ defmodule ConnectionCard.PageController do
     put_flash(
       conn,
       :info,
-      "Created #{record.attributes["first_name"]} #{record.attributes["last_name"]} (ID #{record.id})")
-    |> redirect to: "/"
+      "Thanks for connecting with us! We'll follow up with you soon.")
+    |> redirect(to: "/")
   end
 
   defp create_contact_methods(person, params) do
@@ -83,6 +81,6 @@ defmodule ConnectionCard.PageController do
   def filter_person_params(person) do
     whitelist = ~w(first_name last_name)a
     person
-    |> Enum.filter(fn {k,v} -> k in whitelist end)
+    |> Enum.filter(fn {k,_v} -> k in whitelist end)
   end
 end

@@ -4,7 +4,10 @@ defmodule ConnectionCard.AdminView do
   def setting_value(settings, name) when is_list(settings) do
     settings
     |> Enum.find(&(&1.name == name))
-    |> Map.get(:value)
+    |> case do
+         nil -> nil
+         map -> Map.get(map, :value)
+       end
   end
 
   def workflow_json(workflows) do
