@@ -16,3 +16,8 @@ alias ConnectionCard.Repo
   name: "church_name",
   value: "Your church name"}
 |> Repo.insert!
+
+%ConnectionCard.Setting{
+  name: "default_workflow_id",
+  value: "0"}
+|> Repo.insert!

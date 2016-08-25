@@ -1,6 +1,5 @@
 defmodule ConnectionCard.AdminController do
   use ConnectionCard.Web, :controller
-  import Logger
 
   alias ConnectionCard.{Repo, Setting, Option}
 

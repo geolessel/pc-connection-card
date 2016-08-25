@@ -8,6 +8,10 @@
 <div class="box">
   <div id="name"></div>
 
+  <h2>Add all connection cards to this workflow:</h2>
+
+  <div id="default-workflow-options" class="fw-w"></div>
+
   <h2>Interest options:</h2>
 
   <div id="interest-options" class="fw-w"></div>
@@ -15,6 +19,9 @@
 
 <script type="text/javascript">
   window.onload = function() {
+    const DefaultWorkflow = React.createElement(Components.DefaultWorkflow, { workflows: <%= raw workflow_json(@workflows) %>, default_workflow_id: "<%= setting_value(@settings, "default_workflow_id") %>" })
+    ReactDOM.render(DefaultWorkflow, document.getElementById("default-workflow-options"))
+  
     const Setting = React.createElement(Components.ChurchNameSetting, { name: "<%= setting_value(@settings, "church_name") %>"})
     ReactDOM.render(Setting, document.getElementById("name"))
 

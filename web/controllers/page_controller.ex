@@ -1,14 +1,12 @@
 defmodule ConnectionCard.PageController do
   use ConnectionCard.Web, :controller
 
-  alias ConnectionCard.{Repo, Option}
+  alias ConnectionCard.{Repo, Option, Setting}
   alias PcoApi.People.{Person, Email, PhoneNumber, Address}
-  alias PcoApi.People.Workflow
   alias PcoApi.People.Workflow.Card
 
   def index(conn, _params) do
     options = Repo.all from o in Option, select: %{name: o.name, workflow_id: o.workflow_id}
-    IO.inspect options
     render conn, "index.html", options: options
   end
 
@@ -20,13 +18,14 @@ defmodule ConnectionCard.PageController do
       |> Person.new()
       |> Person.create()
       |> create_contact_methods(person_params)
+      |> add_to_default_workflow()
       |> add_to_workflows(interests)
 
     put_flash(
       conn,
       :info,
-      "Created #{record.attributes["first_name"]} #{record.attributes["last_name"]} (ID #{record.id})")
-    |> redirect to: "/"
+      "Thanks for connecting with us! We'll follow up with you soon.")
+    |> redirect(to: "/")
   end
 
   defp create_contact_methods(person, params) do
@@ -64,6 +63,14 @@ defmodule ConnectionCard.PageController do
     |> Enum.all?(&(String.length(params[&1]) > 0))
   end
 
+  defp add_to_default_workflow(person) do
+    card = Card.new(person_id: person.id)
+    id = Repo.one from s in Setting, where: s.name == "default_workflow_id", select: s.value
+    # TODO: change either this or the API wrapper. This requires inside knowledge of pco_api to make this work.
+    Card.create(%PcoApi.Record{type: "Workflow", id: id}, card)
+    person
+  end
+
   defp add_to_workflows(person, interests) do
     card = Card.new(person_id: person.id)
     interests
@@ -83,6 +90,6 @@ defmodule ConnectionCard.PageController do
   def filter_person_params(person) do
     whitelist = ~w(first_name last_name)a
     person
-    |> Enum.filter(fn {k,v} -> k in whitelist end)
+    |> Enum.filter(fn {k,_v} -> k in whitelist end)
   end
 end
