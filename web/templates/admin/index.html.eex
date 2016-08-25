@@ -8,8 +8,6 @@
 <div class="box">
   <div id="name"></div>
 
-  <h2>Add all connection cards to this workflow:</h2>
-
   <div id="default-workflow-options" class="fw-w"></div>
 
   <h2>Interest options:</h2>

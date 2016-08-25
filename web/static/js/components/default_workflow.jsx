@@ -16,10 +16,17 @@ const DefaultWorkflow = React.createClass({
   render() {
     const options = this.props.workflows.map(w => <option key={w.id} value={w.id}>{w.name}</option>)
     return (
-      <div>
-        <select name="setting[default_workflow_id]" defaultValue={this.props.default_workflow_id} className="select" onChange={this.handleChange}>
-          {options}
-        </select>
+      <div className="pane flex-stack">
+        <div className="option-title">
+          <strong>Default Workflow:</strong>
+        </div>
+        <div className="option-workflow">
+          <strong>Workflow:</strong>
+          {' '}
+          <select name="setting[default_workflow_id]" defaultValue={this.props.default_workflow_id} className="select" onChange={this.handleChange}>
+            {options}
+          </select>
+        </div>
       </div>
     )
   },
