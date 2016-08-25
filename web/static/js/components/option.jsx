@@ -17,32 +17,40 @@ const Option = React.createClass({
     else {
       const options = props.workflows.map(w => <option key={w.id} value={w.id}>{w.name}</option>)
       return (
-        <fieldset className="pane">
-          <div className="flex-stack">
-            <div className="f-1" style={{flex: 0, flexBasis: "200px"}}>
-              <strong>Name:</strong> <input type="hidden" name="option[id]" value={props.id} />
-              <input
-                type="text"
-                name="option[name]"
-                placeholder="Volunteering"
-                defaultValue={props.name}
-                onChange={this.handleNameChange}
-                className="fs-12p"
-              />
+        <div>
+          <fieldset className="pane">
+            <div className="flex-stack">
+              <div className="option-title">
+                <strong>Name:</strong> <input type="hidden" name="option[id]" value={props.id} />
+                <input
+                  type="text"
+                  name="option[name]"
+                  placeholder="Volunteering"
+                  defaultValue={props.name}
+                  onChange={this.handleNameChange}
+                  className="fs-12p"
+                />
+              </div>
+              <div className="option-workflow">
+                <label htmlFor="option_workflow_id"><strong>Workflow:</strong></label>
+                {' '}
+                <select
+                  name="option[workflow_id]"
+                  defaultValue={this.state.workflow_id}
+                  className="select"
+                  onChange={this.handleSelectChange}
+                  style={{lineHeight: "1.5"}}
+                >
+                  {options}
+                </select>
+              </div>
             </div>
-            <div className="f-1 fb-0">
-              <label htmlFor="option_workflow_id"><strong>Workflow:</strong></label>
-              {' '}
-              <select name="option[workflow_id]" defaultValue={this.state.workflow_id} className="select" onChange={this.handleSelectChange}>
-                {options}
-              </select>
+            <div className="ta-r btw-1p pt-1r " style={{margin: "1rem -1rem 0", borderColor: "#eee"}}>
+              <button className="btn btn--primary btn--small" onClick={this.handleSave}>Save</button>
+              <button className="btn btn--small" onClick={this.handleCancel}>Cancel</button>
             </div>
-          </div>
-          <div className="ta-r btw-1p pt-1r " style={{margin: "1rem -1rem 0", borderColor: "#eee"}}>
-            <button className="fs-12p btn btn--primary" onClick={this.handleSave}>Save</button>
-            <button className="fs-12p btn" onClick={this.handleCancel}>Cancel</button>
-          </div>
-        </fieldset>
+          </fieldset>
+        </div>
       )
     }
   },
